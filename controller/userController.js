@@ -1,8 +1,6 @@
-const registerUser = async (req, res)=>{
-    const {full_name, email, password, tags, pic } = req.body;
-    res.send({
-        full_name, email
-    })
-}
+// import expressAsyncHandler from "express-async-handler";
+// import { User } from "../models/userModel";
 
-module.exports = { registerUser }
+// const registerUser = expressAsyncHandler(async )
+
+// module.exports = { registerUser }
