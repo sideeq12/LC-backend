@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:ital,wght@0,400;1,400;1,500&display=swap');
+
+.mainLogin{
+    height: 100vh;
+    overflow: hidden;
+    background-color: #02083E;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+}
+.secondLogin{
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.secondLogin nav{
+    color: white;
+    font-size: 30px;
+    margin-top: 35px;
+    margin-left: 40px;
+}
+.secondLogin p{
+    color: white;
+    width: 80%;
+    margin-top: -15px;
+    text-align: center;
+    align-self: center;
+}
+.login{
+    font-size: 15px;
+    height: 100vh;
+    background-color: white;
+    width: 40vw;
+    padding-left: 50px;
+    padding-top: 100px;
+}
+.login .error {
+    color: red;
+    width: 300px;
+}
+.first_nav{
+    position: fixed;
+    top : 20px;
+    right: 20px;
+    display: flex;
+}
+
+.first_nav li{
+    list-style: none;
+    margin-right: 50px;
+}
+.first_nav li a{
+    text-decoration: none;
+}
+.first_nav li a:hover{
+ font-size: 20px;
+ padding: 5px 10px;
+color: white;
+ background-color: #02083E;
+ transition: .2s;
+ cursor: pointer;
+} 
+
+
+.login h2{
+    color: #02083E;
+    font-size: 45px;
+}
+.login h4{
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.637);
+}
+.login form label{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.login form{
+    width: 350px; 
+}
+.login form input{
+    height: 30px;
+    padding-left: 10px;
+    width: 100%;
+}
+.login form button {
+    margin-top: 10px;
+    height: 35px;
+    width: 360px;
+    color: white;
+    border: none;
+    background-color: #02083E;
+    margin-bottom: 10px;
+}
+.login form button a{
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+.login a{
+    text-decoration: none;
+    color: #02083E;
+}
+
+
+@media (max-width : 800px) {
+    .mainLogin{
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    .secondLogin, .login{
+        width: 100vw;
+        padding-bottom: 20px;
+    }
+    .login h2{
+        font-size: 25px;
+        width: 200px;
+    }
+    .login form{
+        width: 200px;
+    }
+    .login form button {
+        width: 220px;
+        border: none;
+        border-radius: 5px;
+    }
+    .first_nav{
+        display: none;
+    }
+    .first_nav li{
+        margin-right: 20px;
+    }
+    .first_nav li a{
+        color: white;
+    }
+    .login{
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    .login .error{
+        font-size: small;
+    }
+}

@@ -1,0 +1,19 @@
+
+--Login Page--
+
+The first networking platform for student's on campus, where you showcase your
+knowledge, to peer-to-peer learning.
+
+
+
+Welcome to {name}
+
+Login to your account 
+
+Email
+
+Password
+
+Log in
+
+Don't have an account? Sign up

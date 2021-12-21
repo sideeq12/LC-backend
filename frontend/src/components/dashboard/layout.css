@@ -1,0 +1,100 @@
+.layout{
+    width: 75vw;
+    padding-top: 50px;
+    padding-left: 50px;
+    height: 100vh;
+    overflow-y: scroll;
+}
+.userDetails{
+    display: flex;
+    height: 200px;
+    width: 50vw
+}
+.userDetails img{
+    object-fit: cover;
+    width: 153px;
+    height: 153px;
+    border-radius: 100%;
+    border : 8px solid rgba(0, 0, 0, 0.171);
+}
+.userDetails p{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+}
+.userDetails p b{
+    font-size: 25px;
+    color: #02083E;
+}
+.tagsection{
+    width: 65vw;
+    display: flex;
+}
+.userDetails p em{
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.486);
+}
+.tagsection .tagList p{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40vw;
+}
+.tagsection .tagList p em{
+    color: #1CA7F5;
+    background-color: #1ca5f52d;
+    margin: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.tagsection .aboutTag p{
+    color: rgba(0, 0, 0, 0.767);
+}
+.skillList{
+    width: 65vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width : 800px) {
+    .layout{
+        overflow-x: hidden;
+        padding-top: 100px;
+        width: 100vw;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .userDetails{
+        height: 120px;
+    }
+    .userDetails img{
+        height:87px ;
+        width: 87px;
+    }
+    .userDetails p{
+        padding: 0px;
+        margin-left: 10px;
+    }
+    .userDetails p b{
+        font-size: 20px;
+        width: 200px;
+    }
+    
+    .tagsection{
+        flex-direction: column;
+    }
+    .tagsection .tagList p{
+        width: 90vw;
+        text-align: left;
+        font-size: 12px;
+    }
+    .tagsection .aboutTag{
+        width: 80vw;
+    }
+    .skillList{
+        width: 100vw;
+    }
+    /* .skillList{
+        background-color: green;
+    } */
+}

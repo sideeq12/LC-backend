@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:ital,wght@0,400;1,400;1,500&display=swap');
+
+.CoverPage{
+    font-family: 'Poppins', sans-serif;
+}
+.cover{
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    height: 100%;
+    overflow: hidden;
+    align-items: center;
+}
+
+.headNav{
+    z-index: 1;
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+.headNav ul{
+    display: flex;
+    margin-right: 150px;
+}
+.headNav ul li{
+    margin-left: 60px;
+    list-style: none;
+}
+.headNav ul li a{
+    text-decoration: none;
+    color: white;
+}
+.headNav nav{
+    margin-left: 150px;
+    font-size: 30px;
+    color: #02083E;
+}
+.imageSignUp{
+    width: 50vw;
+    height: 100vh;
+    background-color: #02083E;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.imageSignUp p{
+    width: 80%;
+    text-align: center;
+}
+.mainSignup{
+    width: 50vw;
+}
+.mainSignup .error{
+    margin-left: 150px;
+    color: red;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 50%;
+    font-size: small;
+}
+.mainSignup h2{
+    margin-left: 150px;
+    font-size: 32px;
+    width: 400px;
+}
+.mainSignup h2 span{
+    color: #02083E;
+}
+.mainSignup form{
+    margin-left: 150px;
+}
+.mainSignup input{
+    width: 350px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.mainSignup .data{
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    background-color: #02083E;
+    color: white;
+    width: 360px;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 45px;
+    text-decoration: none;
+    border: none;
+}
+.btn a{
+    color: white;
+    text-decoration: none;
+}
+.mainSignup .text{
+    margin-top: 10px;
+    margin-left: 150px;
+}
+.mainSignup .text a{
+    text-decoration: none;
+}
+@media (max-width : 800px) {
+    .CoverPage{
+        height: fit-content;
+        padding-bottom: 100px;
+    }
+    .CoverPage .cover{
+        flex-direction: column;
+    }
+    .CoverPage .cover .imageSignUp{
+        width: 100vw;
+    }
+    .CoverPage .cover .mainSignup{
+        width: 100vw;
+    }
+    .CoverPage .cover .mainSignup form{
+        margin-left: 40px;
+    }
+    .mainSignup input{
+        width: 200px;
+        height: 25px;
+        margin-bottom: 10px;
+    }
+    .mainSignup .btn{
+        width: 210px;
+        height: 35px;
+    }
+    .mainSignup h2{
+        margin-left: 40px;
+        width: 300px;
+    }
+    .mainSignup .text{
+        margin-left: 40px;
+        width: 200px;
+    }
+    .mainSignup .error{
+        margin-left: 40px;
+        margin-bottom: 5px;
+        width: fit-content;
+    }
+    .headNav {
+        background-color: #02083E;
+    }
+    .headNav nav{
+        color: white;
+        margin-left: 20px;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    .headNav ul{
+        margin-right: 10px;
+    }
+    
+    .headNav ul li{
+        margin-left: 10px;
+        font-size: 15px;
+        /* background-color: green; */
+    }
+}

@@ -1,0 +1,68 @@
+.welcome{
+    scroll-snap-align: start;
+    height : 100vh;
+    width : 100vw;
+    background-color : #02083E;
+    color : white;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    flex-wrap: nowrap;
+    gap: 2em;
+}
+.welcome .textSection, .welcome .imageSection{
+    width : 45vw; 
+}
+
+.welcome .imageSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: fill;
+}
+.welcome .imageSection img{
+    width: 100%;
+}
+
+.welcome .textSection p{
+    color: rgba(255, 255, 255, 0.664);
+    font-weight: bold;
+}
+.welcome .textSection h1{
+    font-size : 40px;
+}
+.welcome .textSection a{
+    margin-top: 20px;
+    padding: 15px 0px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #02083E;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 10px;
+}
+.welcome .textSection .get a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width : 800px) {
+    .welcome .textSection b{
+        font-size: 25px;
+        margin-top: 40px;
+    }
+    .welcome .textSection p{
+        font-size: 15px;
+    }
+    .welcome{
+        flex-direction: column;
+        padding-top: 120px;
+        height: 100%;
+    }
+    .welcome .textSection,.welcome .imageSection{
+        width: 80vw;
+    }
+    
+}

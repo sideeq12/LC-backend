@@ -1,0 +1,69 @@
+.dashboardWrap{
+    width: 100vw;
+    display: flex;
+}
+.dashboardWrap .FileWrap{
+    /* background-color: green; */
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboardWrap .FileWrap .fileCover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+}
+.dashboardWrap .FileWrap .fileCover h2{
+    background-color: #02083E;
+    color: white;
+    width: 100%;
+    padding: 20px 0px;
+}
+.dashboardWrap .FileWrap .fileCover form{
+    text-align: left;
+    width: 70%;
+}
+.dashboardWrap .FileWrap .fileCover form .inputCover{
+    margin-top: 20px;
+}
+.dashboardWrap .FileWrap .fileCover form input,.dashboardWrap .FileWrap .fileCover form textarea {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.521);
+    height: 30px;
+    text-align: center;
+}
+.dashboardWrap .FileWrap .fileCover form textarea {
+    height: 60px;
+}
+.dashboardWrap .FileWrap .fileCover form .price{
+    display: flex;
+    margin-top: 10px;
+    justify-content: left;
+    align-items: center;
+}
+.dashboardWrap .FileWrap .fileCover form .price input{
+    width: 165px;
+    margin-left: 10px;
+}
+.dashboardWrap .FileWrap .fileCover form button{
+    color: white;
+    background-color: rgb(6, 94, 6);
+    margin-top: 10px;
+    border: none;
+    width: 101%;
+    height: 40px;
+    font-weight: bold;
+}
+@media (max-width : 800px) {
+    .dashboardWrap .FileWrap{
+        padding-top: 120px;
+        width: 100vw;
+    }
+    .dashboardWrap .FileWrap .fileCover{
+        width: 90vw;
+    }
+}

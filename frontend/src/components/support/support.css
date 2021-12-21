@@ -1,0 +1,39 @@
+.dashboardWrap{
+    width: 100vw;
+    display: flex;
+}
+.dashboardWrap .AboutWrapper{
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4em;
+}
+.dashboardWrap .AboutWrapper h1{
+    position: fixed;
+    top : 10vh
+}
+.dashboardWrap .AboutWrapper img,.dashboardWrap .AboutWrapper .Textabout{
+    width: 30vw;
+}
+
+.dashboardWrap .AboutWrapper p{
+    width: 60;
+}
+@media (max-width : 800px) {
+    .dashboardWrap .AboutWrapper{
+        width: 100vw;
+        flex-direction: column;
+        gap: 1em;
+        padding-top: 120px;
+    }
+    .dashboardWrap .AboutWrapper .Textabout, .dashboardWrap .AboutWrapper img{
+        width: 80vw;
+    }
+    .dashboardWrap .AboutWrapper h1{
+        position: fixed;
+        top : 9vh;
+        font-size: 20px;
+    }
+
+}
