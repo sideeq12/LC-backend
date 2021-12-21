@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 // import {registerUser} from "../controller/userController"
-import {User } from "./models/userModel"
+const User = require("../models/userModel")
 
 router.post("/signup", (req, res) =>{
     const signedUpUser = new User({
@@ -18,3 +18,12 @@ router.post("/signup", (req, res) =>{
         res.json(error)
     })
 })
+
+
+// Get request
+router.get("/users", (req, res)=>{
+    res.json({
+        data : "Data not found !"
+    })
+})
+module.exports = router;

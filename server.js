@@ -1,23 +1,20 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose")
+const cors = require("cors")
 const dotenv = require("dotenv")
+const routesUrl = require("./UserRoutes/userRoutes");
+const req = require("express/lib/request");
 
 dotenv.config()
+console.log("connection initialised")
 mongoose.connect(process.env.DATABASE_ACCESS, ()=>{
     console.log("database connected!")
 })
+app.use(express.json())
+app.use(cors())
+app.use("/app", routesUrl)
 
-app.get("/", (req, res)=>{
-    res.json({
-        data : {
-            Avater : "iamgeLink",
-            Full_name : "Waheed Sodiq",
-            Email : "email",
-            tags : [ "writing service", "cooking", "Designing"]
-        }
-    })
-})
 
 app.listen(8080, ()=>{
     console.log("server running on the port 8080")
