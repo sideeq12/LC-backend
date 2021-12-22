@@ -10,39 +10,17 @@ const userSchema = new Schema({
     tags : String,
     password : String,
     Faculty : String,
+    date : {
+        type : Date,
+        default : Date.now
+    },
     isVerified :  {
         type : Boolean,
         default : false
     }
 })
-//     full_name : {
-//         type : String,
-//         required : true,
-//     }, 
-//     email : {
-//         type : String,
-//         required : true,
-//         unique : true
-//     },
-//     password : {
-//         type : String,
-//         required : true,
-//     }, 
-//     tags : {
-//         type : String,
-//         required : true,
-//     },
-//     description : {
-//         type : String,
-//         required : true
-//     },
-//     date : {
-//         type : Date,
-//         default : Date.now
-//     }
-// }, {
-//     timestamps : true
-// })
+
+
 //  userSchema.pre("save", async function(next){
 //      if(!this.isModified("password")){
 //          next()

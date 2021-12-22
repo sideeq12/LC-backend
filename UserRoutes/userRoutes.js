@@ -1,11 +1,12 @@
 const express = require("express");
 const req = require("express/lib/request");
 const router = express.Router();
-// import {registerUser} from "../controller/userController"
 const myUsers = require("../models/userModel")
 
 router.post("/signup", async (req, res) =>{
     let email = req.body.email
+
+
     // Firstly checking if User exist
     const userExist = await myUsers.findOne({email})
     if(userExist){
@@ -24,10 +25,11 @@ router.post("/signup", async (req, res) =>{
         })
         signedUpUser.save()
         .then(data =>{
+            console.log("added successfully")
             res.json({userData : data, result : "success"})
         })
         .catch(err => {
-            res.json(error)
+            res.json(err)
         })
     }
 })
