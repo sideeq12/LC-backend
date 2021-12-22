@@ -45,4 +45,4 @@ const userSchema = new Schema({
 //  } )
 const myUsers = mongoose.model("Users", userSchema)
 
-module.exports = { myUsers }
+module.exports = myUsers

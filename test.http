@@ -4,6 +4,5 @@ Content-Type: application/json
 {
     "full_name" : "Waheed Sodiq A",
     "email" : "sawaheed@oau.edu.ng",
-    "password" : "test",
-    "tags" : "coding"
+    "password" : "test"
 }

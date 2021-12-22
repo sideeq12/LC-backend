@@ -5,15 +5,22 @@ const router = express.Router();
 const myUsers = require("../models/userModel")
 
 router.post("/signup", (req, res) =>{
-    console.log(req.body)
-    console.log(myUsers)
+    let email = req.body.email
+    // Firstly checking if User exist
+    const userExist = await myUsers.findOne({email}, function(error, response){
+        if(error){
+            consolo.log("error while checking")
+        }else{
+            consolo.log("no error while checking")
+        }
+    }) 
+
     const signedUpUser = new myUsers({
         full_name : req.body.full_name,
         email : req.body.email,
         password : req.body.password,
         tags : req.body.tags 
     })
-    console.log(req.body)
     signedUpUser.save()
     .then(data =>{
         res.json(data)
