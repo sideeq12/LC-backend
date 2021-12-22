@@ -5,8 +5,15 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
     full_name : String,
     email : String,
+    image : String, 
+    Gender : String,
     tags : String,
-    password : String
+    password : String,
+    Faculty : String,
+    isVerified :  {
+        type : Boolean,
+        default : false
+    }
 })
 //     full_name : {
 //         type : String,

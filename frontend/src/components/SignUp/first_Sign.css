@@ -33,8 +33,8 @@
     color: white;
 }
 .headNav nav{
-    margin-left: 150px;
-    font-size: 30px;
+    margin-left: 50px;
+    font-size: 20px;
     color: #02083E;
 }
 .imageSignUp{
@@ -65,22 +65,26 @@
 }
 .mainSignup h2{
     margin-left: 150px;
-    font-size: 32px;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-bottom: -10px;
     width: 400px;
 }
 .mainSignup h2 span{
     color: #02083E;
 }
 .mainSignup form{
+    margin-top: 10px;
     margin-left: 150px;
 }
-.mainSignup input{
+.mainSignup input, .mainSignup select{
     width: 350px;
-    height: 30px;
-    margin-bottom: 10px;
+    height: 25px;
+    margin-bottom: 5px;
 }
 .mainSignup .data{
     display: flex;
+    font-size: small;
     flex-direction: column;
 }
 .btn{
@@ -89,7 +93,7 @@
     width: 360px;
     border-radius: 5px;
     margin-top: 10px;
-    height: 45px;
+    height: 35px;
     text-decoration: none;
     border: none;
 }
@@ -121,7 +125,7 @@
     .CoverPage .cover .mainSignup form{
         margin-left: 40px;
     }
-    .mainSignup input{
+    .mainSignup input, .mainSignup select{
         width: 200px;
         height: 25px;
         margin-bottom: 10px;

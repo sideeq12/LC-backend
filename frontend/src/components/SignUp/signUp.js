@@ -12,7 +12,8 @@ const SignUp = ()=>{
     const [password, setPassword] = useState("")
     const [Spassword, setSpassword] = useState("")
     const [ErrorMessage, setErrorMessage]= useState("")
-    const [User, setUser] = useState({ full_name: "", email : "", password : ""})
+    const [User, setUser] = useState({ full_name: "", 
+    email : "", Faculty : "", password : "", image : "", isVerified : false, gender : "not specified", tags : ""})
 
     const changeName = (e)=>{
         let data = e.target.value
@@ -31,6 +32,18 @@ const SignUp = ()=>{
         setSpassword(e.target.value)
     }
 
+    const changeFaculty = (e)=>{
+        let data = e.target.value
+        User.Faculty= data
+    }
+    const changeGender = (e)=>{
+        let data = e.target.value;
+        User.gender = data
+    }
+    const changeTags = (e)=>{
+        let data = e.target.value;
+        User.tags = data;
+    }
     const Test = (e)=>{
         e.preventDefault();
         if(fullname === ""){
@@ -38,6 +51,7 @@ const SignUp = ()=>{
         }else if(email.includes("oauife.edu.ng")){
             if(password !== "" && password.length > 8){
                 if(password === Spassword){
+                    setErrorMessage("")
                     User.password = password
                     console.log("Connection initiated")
                     console.log(User)
@@ -47,11 +61,17 @@ const SignUp = ()=>{
                         }
                     }
                     axios.post(url, User, Headers)
-                    .then((res)=>{ console.log("Response : ", res)})
+                    .then((res)=>{
+                        if(res.data.result == "used"){
+                                setErrorMessage("Email already been used")
+                        }else{
+                            console.log("successful")
+                            navigate("/verification")
+                        }
+                        
+                        })
                     .catch((err)=>{ console.log("Error response : ", err)})
                     console.log("the user is ", User)
-
-                    // navigate("/verification")
 
             }else{
                 setErrorMessage("Password not Match!")
@@ -76,6 +96,40 @@ const SignUp = ()=>{
                         <div className="data">
                             <label>Student's email : </label>
                             <input type="email" onChange={changeEmail} required/>
+                        </div>
+                        <div className="data">
+                            <label>Gender :</label>
+                            <select id="gender" onChange={changeGender} required>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Bisexual">Bisexual</option>
+                                <option value="Trans">Trans</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div className="data">
+                        <label>Select Faculty:</label>
+                            <select  onChange={changeFaculty} required>
+                                <option value="Faculty of Technology">Faculty of Technology</option>
+                                <option value="Faculty of Administration">Faculty of Administration</option>
+                                <option value="Faculty of Art">Faculty of Art</option>
+                                <option value="Faculty of Education">Faculty of Education</option>
+                                <option value="Faculty of Science">Faculty of Science</option>
+                                <option value="Faculty of Pharmacy">Faculty of Pharmacy</option>
+                                <option value="Faculty of Clinical science">Faculty of  Clinical science</option>
+                                <option value="Faculty of Denstistry">Faculty of Denstistry</option>
+                                <option value="Faculty of Law">Faculty of Law</option>
+                                <option value="Faculty of Medical science">Faculty of Medical science</option>
+                                <option value="Faculty of Social science">Faculty of Social science</option>
+                            </select>
+                        </div>
+                        <div className="data skill">
+                            <label>Your skill tags (seperate with comma ","): </label>
+                            <input type="text" onChange={changeTags} placeholder="tag1,tag2" required/>
+                        </div>
+                        <div className="data">
+                            <label>Uplaod profile picture</label>
+                            <input type="file" />
                         </div>
                         <div className="data">
                             <label>Password : </label>
