@@ -8,6 +8,7 @@ import "./newskill.css"
 const NewSkill =()=>{
     const url = "http://localhost:8080/api/cards"
     const navigate = useNavigate()
+    const [error, setError]= useState("")
     const [card, setCard ] = useState({
         uploader_email : "",
         description : "",
@@ -40,9 +41,10 @@ const NewSkill =()=>{
     }
     async function sendData(e){
         e.preventDefault()
-        const form = e.currentTarget
+        if(card.description !== ""){
+            if(card.social_link !== ""){
+                const form = e.currentTarget
         const fileInput = Array.from(form.elements).find(({name}) => name == "file")
-        console.log(card)
         if(fileInput.files.length ===1){
             const formData = new FormData();
             for(const file of fileInput.files){
@@ -65,6 +67,16 @@ const NewSkill =()=>{
                      .catch((err)=> console.log("error exist"))
                  }
             }
+        }else{
+            setError("please provide an image")
+        }
+
+            }else{
+                setError("Please provide socail link")
+            }
+
+        }else{
+            setError("Title cannot be blank")
         }
     }
     return (
@@ -73,6 +85,7 @@ const NewSkill =()=>{
             <div className="FileWrap">
                 <div className="fileCover">
                     <h2>Create a new skill Card</h2>
+                    <div className="error">{error}</div>
                     <form encType="multipart/form-data" onSubmit={sendData}>
                         <div className="inputCover">
                             <label>Title :</label> <br/>
