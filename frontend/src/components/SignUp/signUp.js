@@ -6,14 +6,36 @@ import axios from "axios"
 const SignUp = ()=>{
     let navigate = useNavigate()
     let url = "http://localhost:8080/app/signup"
+
     
     const [fullname, setFullname] = useState("")
     const [email, setEmail]= useState("")
     const [password, setPassword] = useState("")
     const [Spassword, setSpassword] = useState("")
     const [ErrorMessage, setErrorMessage]= useState("")
+    const [image, setImage] = useState("empty")
     const [User, setUser] = useState({ full_name: "", 
     email : "", Faculty : "", password : "", image : "", isVerified : false, gender : "not specified", tags : ""})
+
+    
+    async function handleform(e){
+        const form = e.currentTarget;
+        const fileInput = Array.from(form.elements).find(({name})=> name == "file")
+        if(fileInput.files.length ===1){
+            const formData = new FormData();
+            for(const file of fileInput.files){
+                formData.append("file", file)
+                formData.append("upload_preset", "learnersconnect")
+                const data = await fetch("https://api.cloudinary.com/v1_1/starclick/image/upload",{
+                    method : 'POST',
+                     body : formData
+                    }).then(r=> r.json())
+                 console.log("cloudinary response : ", data.url)
+                 User.image = data.url
+            }
+        }
+       
+    }
 
     const changeName = (e)=>{
         let data = e.target.value
@@ -31,7 +53,6 @@ const SignUp = ()=>{
     const changeSpassword = (e)=>{
         setSpassword(e.target.value)
     }
-
     const changeFaculty = (e)=>{
         let data = e.target.value
         User.Faculty= data
@@ -44,6 +65,7 @@ const SignUp = ()=>{
         let data = e.target.value;
         User.tags = data;
     }
+    
     const Test = (e)=>{
         e.preventDefault();
         if(fullname === ""){
@@ -66,7 +88,7 @@ const SignUp = ()=>{
                                 setErrorMessage("Email already been used")
                         }else{
                             console.log("successful")
-                            navigate("/verification")
+                            navigate("/dashboard")
                         }
                         
                         })
@@ -88,7 +110,7 @@ const SignUp = ()=>{
         <div className="mainSignup">
                     <h2><span>Get started with</span> Leaner's Connect</h2>
                     <div className="error">{ErrorMessage}</div>
-                    <form>
+                    <form encType="multipart/form-data" onChange={handleform}>
                         <div className="data">
                             <label>Full name : </label>
                             <input type="text" onChange={changeName}  required/>
@@ -100,6 +122,7 @@ const SignUp = ()=>{
                         <div className="data">
                             <label>Gender :</label>
                             <select id="gender" onChange={changeGender} required>
+                            <option value="none">select</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
                                 <option value="Bisexual">Bisexual</option>
@@ -129,7 +152,7 @@ const SignUp = ()=>{
                         </div>
                         <div className="data">
                             <label>Uplaod profile picture</label>
-                            <input type="file" />
+                            <input type="file" accept="image/png, image/jpeg" name="file" required/>
                         </div>
                         <div className="data">
                             <label>Password : </label>

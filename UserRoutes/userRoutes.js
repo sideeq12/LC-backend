@@ -7,7 +7,6 @@ const myUsers = require("../models/userModel")
 router.post("/signup", async (req, res) =>{
     let email = req.body.email
 
-
     // Firstly checking if User exist
     const userExist = await myUsers.findOne({email})
     if(userExist){
@@ -48,9 +47,28 @@ router.post("/signup", async (req, res) =>{
 
 
 // Get request
-router.get("/users", (req, res)=>{
-    res.json({
-        data : "Data not found !"
-    })
+router.post("/user", async(req, res)=>{
+    const email = req.body.email
+    const password = req.body.password
+    const userExist = await myUsers.findOne({email})
+    if(userExist){
+        checkUser(email, password)
+        async function checkUser(email, password) {
+            const match = await bcrypt.compare(password, userExist.password);
+        
+            if(match) {
+                res.json({ userData : userExist,
+                message : "correct"})
+            }else{
+                res.json({
+                    message : "incorrect"
+                })
+            }
+        }
+    }else {
+        res.json({
+            message : "user_not_found"
+        })
+    }
 })
 module.exports = router;

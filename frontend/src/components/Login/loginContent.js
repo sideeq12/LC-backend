@@ -1,33 +1,51 @@
 import React, {useState, useEffect} from "react";
 import { Link , useNavigate} from "react-router-dom";
+import axios from "axios"
 
 const LoginDetails = ()=>{
     let navigate = useNavigate();
-    let direction = "login"
+    let url = "http://localhost:8080/app/user"
 
     // declaring the hooks
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [ErrorMessage, setErrorMessage] = useState("")
-    const [User, setUser] = useState({})
+    const [User, setUser] = useState({email : "", password : ""})
 
     // fuction being used to update datas
     const checkEmail = (e)=>{
-        setEmail(e.target.value)
-        console.log(email)
+        let data = e.target.value
+        setEmail(data)
+        User.email = data
     }
     const checkPassword = (e)=>{
-        setPassword(e.target.value)
+        let data = e.target.value
+        setPassword(data)
+        User.password = data
     }
     const Test = (e)=>{
         e.preventDefault()
         if(email.includes("oauife.edu.ng")){
-            if(password === "" ){
-                setErrorMessage("Incorrect password")
+            if(password === " " || password.length < 8){
+                setErrorMessage("password must exceed 8 characters")
             }else{
-                direction = "dashboard"
-                navigate("/dashboard")
-                console.log("approved")
+                const Headers = {
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    }
+                }
+                axios.post(url,User,Headers)
+                .then((data)=>{
+                    let message = data.data.message;
+                    if(message === "correct"){
+                            navigate("/dashboard")
+                    }else if(message === "user_not_found"){
+                            setErrorMessage("Email not found!")
+                    }else{
+                            setErrorMessage("Incorrect password")
+                    }
+                })
+                .catch((err)=>{console.log("error in connection")})
             }
         }else{
             setErrorMessage("Kindly provide valid OAU student's mail")
