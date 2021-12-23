@@ -11,6 +11,7 @@ const userSchema = new Schema({
     password : String,
     user_description : String,
     Faculty : String,
+    token : String,
     date : {
         type : Date,
         default : Date.now

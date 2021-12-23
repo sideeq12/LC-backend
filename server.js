@@ -8,8 +8,6 @@ const req = require("express/lib/request");
 
 dotenv.config()
 
-
-console.log("connection initialised")
 mongoose.connect(process.env.DATABASE_ACCESS, ()=>{
     console.log("database connected!")
 })

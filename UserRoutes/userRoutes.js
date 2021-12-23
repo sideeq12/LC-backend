@@ -3,6 +3,7 @@ const req = require("express/lib/request");
 const router = express.Router();
 const bcrypt = require("bcryptjs")
 const myUsers = require("../models/userModel")
+const generateToken = require("../utils/generateToken")
 
 router.post("/signup", async (req, res) =>{
     let email = req.body.email
@@ -19,7 +20,6 @@ router.post("/signup", async (req, res) =>{
             // Store hash in your password DB.
 
             if(!err){
-                console.log("The hashed password is :", hash)
                 const signedUpUser = new myUsers({
                     full_name : req.body.full_name,
                     email : req.body.email,
@@ -28,7 +28,8 @@ router.post("/signup", async (req, res) =>{
                     Gender : req.body.gender,
                     image : req.body.image,
                     tags : req.body.tags ,
-                    user_description  : ""
+                    user_description  : "",
+                    token : generateToken(email)
                 })
                 signedUpUser.save()
                 .then(data =>{
