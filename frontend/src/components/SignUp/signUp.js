@@ -5,7 +5,7 @@ import axios from "axios"
 
 const SignUp = ()=>{
     let navigate = useNavigate()
-    let url = "http://localhost:8080/app/signup"
+    let url = "http://localhost:8080/api/signup"
 
     
     const [fullname, setFullname] = useState("")

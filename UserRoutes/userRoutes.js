@@ -3,6 +3,7 @@ const req = require("express/lib/request");
 const router = express.Router();
 const bcrypt = require("bcryptjs")
 const myUsers = require("../models/userModel")
+const cardLayer = require("../models/cardModels")
 const generateToken = require("../utils/generateToken")
 
 router.post("/signup", async (req, res) =>{
@@ -71,5 +72,24 @@ router.post("/user", async(req, res)=>{
             message : "user_not_found"
         })
     }
+})
+
+router.post("/cards", (req, res)=>{
+    console.log("reached here oo")
+    console.log(req.body)
+    const card = new cardLayer({
+        uploader_email : req.body.uploader_email,
+        description : req.body.description,
+        image : req.body.image,
+        social_link : req.body.social,
+        price : req.body.price
+    })
+    card.save()
+    .then((data)=>{
+        console.log("added succssfully")
+        res.json({data : data})})
+    .catch(err => console.log("not added"))
+
+
 })
 module.exports = router;

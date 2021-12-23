@@ -30,7 +30,7 @@
 .dashboardWrap .FileWrap .fileCover form .inputCover{
     margin-top: 20px;
 }
-.dashboardWrap .FileWrap .fileCover form input,.dashboardWrap .FileWrap .fileCover form textarea {
+.dashboardWrap .FileWrap .fileCover form input{
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.521);
     height: 30px;
@@ -45,8 +45,18 @@
     justify-content: left;
     align-items: center;
 }
-.dashboardWrap .FileWrap .fileCover form .price input{
-    width: 165px;
+.dashboardWrap .FileWrap .fileCover form .inputCover .file{
+    /* display: none; */
+    height: 20px;
+}
+.dashboardWrap .FileWrap .fileCover form .price{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5em;
+}
+.dashboardWrap .FileWrap .fileCover form .inputCover select{
+    width: 100%;
+    height: 30px;
     margin-left: 10px;
 }
 .dashboardWrap .FileWrap .fileCover form button{

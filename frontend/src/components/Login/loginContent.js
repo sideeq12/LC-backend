@@ -4,7 +4,7 @@ import axios from "axios"
 
 const LoginDetails = ()=>{
     let navigate = useNavigate();
-    let url = "http://localhost:8080/app/user"
+    let url = "http://localhost:8080/api/user"
 
     // declaring the hooks
     const [email, setEmail] = useState("")
@@ -53,7 +53,11 @@ const LoginDetails = ()=>{
         }
     }
 
-    
+    useEffect(()=>{
+        if(localStorage.getItem("userInfo") !== null){
+            navigate("/dashboard")
+        }
+    })
     return(
         <div className="login">
             <h2>Welcome Back</h2>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./landing.css"
 import NavStyle from "./nav"
 import Welcome from "./welcome"
@@ -8,7 +8,11 @@ import Review from "./Review";
 import Partners from "./patners";
 import Footer from "./footer";
 
+
 const LandingPage = ()=>{
+    // useEffect(()=>{
+    //     localStorage.removeItem("userInfo")
+    // })
     return (
         <div className="squeeze">
             <NavStyle />

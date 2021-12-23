@@ -3,9 +3,11 @@ const Schema = mongoose.Schema;
 
 const cardSchema = new Schema({
     image : String,
-    heading : String,
-    details : String,
+    description : String,
     price : String,
-    email : String,
+    uploader_email : String,
     social_link : String,
 })
+const myUsers = mongoose.model("cards", cardSchema)
+
+module.exports = myUsers

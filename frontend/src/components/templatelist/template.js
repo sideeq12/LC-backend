@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import NavLinks from "../NavLink/navLink";
+import { useNavigate } from "react-router-dom";
 import "./template.css"
 import SkillDB from "../dashboard/skillDB";
 import Card from "../dashboard/card";
 
 
 const TemplateList =()=>{
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if(localStorage.getItem("userInfo")===null){
+            navigate("/login")
+        }
+    })
     return (
         <div className="dashboardWrap">
             <NavLinks /> 
