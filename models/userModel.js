@@ -9,6 +9,7 @@ const userSchema = new Schema({
     Gender : String,
     tags : String,
     password : String,
+    user_description : String,
     Faculty : String,
     date : {
         type : Date,

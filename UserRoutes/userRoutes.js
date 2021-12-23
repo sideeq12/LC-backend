@@ -1,6 +1,7 @@
 const express = require("express");
 const req = require("express/lib/request");
 const router = express.Router();
+const bcrypt = require("bcryptjs")
 const myUsers = require("../models/userModel")
 
 router.post("/signup", async (req, res) =>{
@@ -14,23 +15,34 @@ router.post("/signup", async (req, res) =>{
             res.json({ userData : userExist,
             result : "used"})
     }else{
-        const signedUpUser = new myUsers({
-            full_name : req.body.full_name,
-            email : req.body.email,
-            password : req.body.password,
-            Faculty : req.body.Faculty,
-            Gender : req.body.gender,
-            image : req.body.image,
-            tags : req.body.tags 
-        })
-        signedUpUser.save()
-        .then(data =>{
-            console.log("added successfully")
-            res.json({userData : data, result : "success"})
-        })
-        .catch(err => {
-            res.json(err)
-        })
+        console.log("Hasing initiated")
+        bcrypt.hash(req.body.password, 10, function(err, hash) {
+            // Store hash in your password DB.
+
+            if(!err){
+                console.log("The hashed password is :", hash)
+                const signedUpUser = new myUsers({
+                    full_name : req.body.full_name,
+                    email : req.body.email,
+                    password : hash,
+                    Faculty : req.body.Faculty,
+                    Gender : req.body.gender,
+                    image : req.body.image,
+                    tags : req.body.tags ,
+                    user_description  : ""
+                })
+                signedUpUser.save()
+                .then(data =>{
+                    console.log("added successfully")
+                    res.json({userData : data, result : "success"})
+                })
+                .catch(err => {
+                    res.json(err)
+                })
+            }else{
+                console.log(err)
+            }
+        });
     }
 })
 
