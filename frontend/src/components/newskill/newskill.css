@@ -27,6 +27,15 @@
     text-align: left;
     width: 70%;
 }
+.dashboardWrap .FileWrap .fileCover .error{
+    color : red;
+    padding: 2px 10px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0.137);
+}
 .dashboardWrap .FileWrap .fileCover form .inputCover{
     margin-top: 20px;
 }
