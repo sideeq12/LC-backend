@@ -1,11 +1,38 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./layout.css"
 import Avatar from "./avatar.jpg"
 import DB from "./skillDB"
 import Card from "./card";
+import axios from "axios"
 
 const DashboardLayout = ()=>{
-    let image = "https://avatarfiles.alphacoders.com/210/thumb-1920-210881.jpg"
+    let image = "https://avatarfiles.alphacoders.com/210/thumb-1920-210881.jpg";
+    const url = "http://localhost:8080/api/dashboard"
+    const [userDetails, setUserDetails] = useState({
+        image : "",
+        full_name :"",
+        faculty : ""
+    })
+    const email = JSON.parse(localStorage.getItem("userInfo")).email
+    const User = {
+        email : email
+    }
+    const Headers = {
+        Headers : {
+            'Content-Type': 'Application/json'
+        }
+    }
+    console.log(User)
+   async function userData(){
+        const data = await axios.post(url, User, Headers).then(response=>{
+            if(response.data.message === "success"){
+                let userData = response.data.data
+            }
+        }   )    
+    }
+
+    userData()
+
     return (
         <div className="layout">
             <div className="userDetails">

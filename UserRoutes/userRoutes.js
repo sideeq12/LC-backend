@@ -89,7 +89,26 @@ router.post("/cards", (req, res)=>{
         console.log("added succssfully")
         res.json({data : data})})
     .catch(err => console.log("not added"))
+})
 
 
+router.post("/dashboard", (req, res)=>{
+    console.log("connection initiated...")
+    let email = req.body.email
+    cardLayer.findOne({ email}, function(err, response){
+        if(!err){
+            console.log(response)
+            res.json({
+                data : response,
+                message : "success"
+            })
+        }else{
+            res.json({
+                message : "not found"
+            })
+        }
+    })
+    
+    console.log(req.body)
 })
 module.exports = router;
