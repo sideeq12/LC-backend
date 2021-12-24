@@ -95,7 +95,7 @@ router.post("/cards", (req, res)=>{
 router.post("/dashboard", (req, res)=>{
     console.log("connection initiated...")
     let email = req.body.email
-    cardLayer.findOne({ email}, function(err, response){
+    myUsers.findOne({ email}, function(err, response){
         if(!err){
             console.log(response)
             res.json({
