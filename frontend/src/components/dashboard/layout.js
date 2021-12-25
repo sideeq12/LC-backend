@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from "react";
 import "./layout.css"
-import Avatar from "./avatar.jpg"
-// import DB from "./skillDB"
 import Card from "./card";
 import axios from "axios"
 
 
 const DashboardLayout = ()=>{
-    let image = "https://avatarfiles.alphacoders.com/210/thumb-1920-210881.jpg";
     const url = "http://localhost:8080/api/dashboard"
     const url2 = "http://localhost:8080/api/cardList"
 
@@ -84,7 +81,7 @@ const DashboardLayout = ()=>{
                 </div>
             </div>
             <div className="skillList">
-                {cardList.map((data)=><Card image={data.image} key={data._id} text={data.description} price={data.price} link="#" />)}
+                {cardList.map((data)=><Card image={data.image} key={data._id} text={data.description} price={data.price} link={data.social_link} />)}
             </div>
         </div>
     )

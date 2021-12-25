@@ -81,7 +81,7 @@ router.post("/cards", (req, res)=>{
         uploader_email : req.body.uploader_email,
         description : req.body.description,
         image : req.body.image,
-        social_link : req.body.social,
+        social_link : req.body.social_link,
         price : req.body.price
     })
     card.save()
