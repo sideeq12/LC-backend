@@ -93,11 +93,9 @@ router.post("/cards", (req, res)=>{
 
 
 router.post("/dashboard", (req, res)=>{
-    console.log("connection initiated...")
     let email = req.body.email
     myUsers.findOne({ email}, function(err, response){
         if(!err){
-            console.log(response)
             res.json({
                 data : response,
                 message : "success"
@@ -108,7 +106,24 @@ router.post("/dashboard", (req, res)=>{
             })
         }
     })
-    
-    console.log(req.body)
+
+})
+
+router.post("/cardList", (req, res)=>{
+    let email = req.body.email
+    cardLayer.find({email}, function(err, response){
+        if(!err){
+            res.json({
+                message : "success",
+                data : response
+            })
+            console.log(response)
+        }else{
+            console.log(err)
+            res.json({
+                message : "error"
+            })
+        }
+    })
 })
 module.exports = router;
