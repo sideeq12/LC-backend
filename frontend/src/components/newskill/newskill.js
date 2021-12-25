@@ -6,7 +6,7 @@ import "./newskill.css"
 
 
 const NewSkill =()=>{
-    const url = "http://localhost:8080/api/cards"
+    const url = "https://learnersconnect.herokuapp.com/api/cards"
     const navigate = useNavigate()
     const [error, setError]= useState("")
     const [card, setCard ] = useState({
@@ -63,7 +63,9 @@ const NewSkill =()=>{
                      }
   
                      axios.post(url, card, Headers)
-                     .then((res)=>{console.log(res)})
+                     .then((res)=>{
+                         console.log(res)
+                        navigate("/dashboard")})
                      .catch((err)=> console.log("error exist"))
                  }
             }

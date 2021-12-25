@@ -8,7 +8,7 @@ import Card from "../dashboard/card";
 
 const TemplateList =()=>{
 
-    const url =  "http://localhost:8080/api/allCard"
+    const url =  "https://learnersconnect.herokuapp.com/api/allCard"
     const navigate = useNavigate()
     const [skill, setSkill ] = useState([])
     const [check, setCheck] =useState(false)

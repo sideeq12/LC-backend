@@ -5,7 +5,7 @@ import axios from "axios"
 
 const SignUp = ()=>{
     let navigate = useNavigate()
-    let url = "http://localhost:8080/api/signup"
+    let url = "https://learnersconnect.herokuapp.com/api/signup"
 
     
     const [fullname, setFullname] = useState("")

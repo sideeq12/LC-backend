@@ -5,8 +5,8 @@ import axios from "axios"
 
 
 const DashboardLayout = ()=>{
-    const url = "http://localhost:8080/api/dashboard"
-    const url2 = "http://localhost:8080/api/cardList"
+    const url = "https://learnersconnect.herokuapp.com/api/dashboard"
+    const url2 = "https://learnersconnect.herokuapp.com/api/cardList"
 
         const [count, setCount] = useState(true)
         const [cardList, setCardList] = useState([])
