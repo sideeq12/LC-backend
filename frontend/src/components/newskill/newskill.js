@@ -61,7 +61,7 @@ const NewSkill =()=>{
                              'Content-Type' : "application/json"
                          }
                      }
-                     console.log("connection initiated");
+  
                      axios.post(url, card, Headers)
                      .then((res)=>{console.log(res)})
                      .catch((err)=> console.log("error exist"))
@@ -89,7 +89,7 @@ const NewSkill =()=>{
                     <form encType="multipart/form-data" onSubmit={sendData}>
                         <div className="inputCover">
                             <label>Title :</label> <br/>
-                            <input type="text" maxlength = "50" placeholder="I will teach how to ..." onChange={handlingDescription}  required/>
+                            <input type="text" maxLength = "50" placeholder="I will teach how to ..." onChange={handlingDescription}  required/>
                         </div>
                         <div className="inputCover">
                             <label>Social media:</label> <br/>

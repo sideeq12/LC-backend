@@ -4,7 +4,8 @@ const router = express.Router();
 const bcrypt = require("bcryptjs")
 const myUsers = require("../models/userModel")
 const cardLayer = require("../models/cardModels")
-const generateToken = require("../utils/generateToken")
+const generateToken = require("../utils/generateToken");
+const { response } = require("express");
 
 router.post("/signup", async (req, res) =>{
     let email = req.body.email
@@ -12,11 +13,10 @@ router.post("/signup", async (req, res) =>{
     // Firstly checking if User exist
     const userExist = await myUsers.findOne({email})
     if(userExist){
-            console.log("User already exist" , userExist)
+
             res.json({ userData : userExist,
             result : "used"})
     }else{
-        console.log("Hasing initiated")
         bcrypt.hash(req.body.password, 10, function(err, hash) {
             // Store hash in your password DB.
 
@@ -34,7 +34,6 @@ router.post("/signup", async (req, res) =>{
                 })
                 signedUpUser.save()
                 .then(data =>{
-                    console.log("added successfully")
                     res.json({userData : data, result : "success"})
                 })
                 .catch(err => {
@@ -75,7 +74,6 @@ router.post("/user", async(req, res)=>{
 })
 
 router.post("/cards", (req, res)=>{
-    console.log("reached here oo")
     console.log(req.body)
     const card = new cardLayer({
         uploader_email : req.body.uploader_email,
@@ -120,6 +118,21 @@ router.post("/cardList", (req, res)=>{
             console.log(response)
         }else{
             console.log(err)
+            res.json({
+                message : "error"
+            })
+        }
+    })
+})
+router.get("/allCard", (req, res)=>{
+    console.log("this connection  is initiated !")
+    cardLayer.find({}, function(err, response){
+        if(!err){
+            res.json({
+                data : response,
+                message : "success"
+            })
+        }else{
             res.json({
                 message : "error"
             })

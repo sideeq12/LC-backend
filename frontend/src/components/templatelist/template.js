@@ -1,6 +1,7 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import NavLinks from "../NavLink/navLink";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
 import "./template.css"
 import SkillDB from "../dashboard/skillDB";
 import Card from "../dashboard/card";
@@ -8,8 +9,9 @@ import Card from "../dashboard/card";
 
 const TemplateList =()=>{
 
-    const url = ""
+    const url =  "http://localhost:8080/api/allCard"
     const navigate = useNavigate()
+    const [skill, setSkill ] = useState([])
     const [check, setCheck] =useState(false)
     useEffect(()=>{
         if(localStorage.getItem("userInfo")===null){
@@ -23,12 +25,17 @@ const TemplateList =()=>{
     }
     if(check === false){
         async function getCard() {
-            axios.post(url, User, Headers).then(response =>{
+            axios.get(url, Headers).then(response =>{
                 if(response.data.message === "success"){
-                    const List = response.data.data
+                    if(response.data.message === "success"){
+                        const List = response.data.data;
+                        setSkill(List)
+                    }
+                   
                 }
          })
         }
+        getCard()
         setCheck(true)
     }
     
@@ -45,7 +52,7 @@ const TemplateList =()=>{
                 <div className="latest">
                 <h3>skills offer list </h3>
                 <div className="cardList">
-                {SkillDB.map((data)=><Card image={data.image} key={data.id} text={data.Text} price={data.amount}/>)}
+                {skill.map((data)=><Card image={data.image} key={data._id} text={data.description} price={data.price} link={data.social_link} />)}
                 </div>
             </div></div>
             </div>
