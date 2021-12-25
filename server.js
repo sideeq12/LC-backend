@@ -14,6 +14,7 @@ mongoose.connect(process.env.DATABASE_ACCESS, ()=>{
 app.use(express.json())
 app.use(cors())
 app.use("/api", routesUrl)
+app.get("/", (req, res)=>{ res.json({status : "Success API"})})
 
 
 app.listen(8080, ()=>{
