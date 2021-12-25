@@ -7,6 +7,12 @@ const cardLayer = require("../models/cardModels")
 const generateToken = require("../utils/generateToken");
 const { response } = require("express");
 
+router.post("/", (req, res)=>{
+    res.json({
+        status : "Api function responsively"
+    })
+})
+
 router.post("/signup", async (req, res) =>{
     let email = req.body.email
 
