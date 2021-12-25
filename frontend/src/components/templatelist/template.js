@@ -7,12 +7,31 @@ import Card from "../dashboard/card";
 
 
 const TemplateList =()=>{
+
+    const url = ""
     const navigate = useNavigate()
+    const [check, setCheck] =useState(false)
     useEffect(()=>{
         if(localStorage.getItem("userInfo")===null){
             navigate("/login")
         }
     })
+    const Headers = {
+        Headers : {
+            'Content-Type': 'Application/json'
+        }
+    }
+    if(check === false){
+        async function getCard() {
+            axios.post(url, User, Headers).then(response =>{
+                if(response.data.message === "success"){
+                    const List = response.data.data
+                }
+         })
+        }
+        setCheck(true)
+    }
+    
     return (
         <div className="dashboardWrap">
             <NavLinks /> 
