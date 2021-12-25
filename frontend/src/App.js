@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
  <Routes>
-  <Route path="/prototype" element={<LandingPage />} />
+  <Route path="/LC-backend" element={<LandingPage />} />
     <Route path="/login" element={<Login/>} />
      <Route path="/signUp" element={<SignUp /> } />
      <Route path="/dashboard" element={<Dashboard /> } />
